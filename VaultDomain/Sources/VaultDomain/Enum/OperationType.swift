@@ -7,9 +7,12 @@
 
 import Foundation
 
-/// Represents the type of a financial operation.
-///
-/// This enum distinguishes between operations from `income` and `expense`
+/// The financial direction of an operation recorded in a vault.
 public enum OperationType: Int16 {
-    case income = 0, expense = 1
+    
+    /// Money received by the vault.
+    case income = 0
+    
+    /// Money spent from the vault.
+    case expense = 1
 }
