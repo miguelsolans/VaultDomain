@@ -9,6 +9,7 @@ import Foundation
 
 public enum CategoryError: LocalizedError {
     case notFound(UUID)
+    case alreadyExists(String)
 }
 
 extension CategoryError {
@@ -18,6 +19,9 @@ extension CategoryError {
             
         case .notFound(let id):
             return "Could not find Category with an ID \(id.uuidString)"
+        
+        case .alreadyExists(let name):
+            return "A category of name \(name) already exists"
         }
     }
     
