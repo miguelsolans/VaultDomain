@@ -8,7 +8,7 @@
 import Foundation
 
 public enum SettingsError: LocalizedError {
-    case notFound(UUID)
+    case notFound
 }
 
 extension SettingsError {
@@ -16,8 +16,8 @@ extension SettingsError {
     public var errorDescription: String? {
         switch self {
             
-        case .notFound(let id):
-            return "Could not find Settings with an ID \(id.uuidString)"
+        case .notFound:
+            return "Could not find Settings"
         }
     }
     

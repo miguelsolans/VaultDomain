@@ -8,7 +8,7 @@
 import Foundation
 
 public enum CurrencyError: LocalizedError {
-    case notFound(UUID)
+    case notFound(String)
 }
 
 extension CurrencyError {
@@ -17,7 +17,7 @@ extension CurrencyError {
         switch self {
             
         case .notFound(let id):
-            return "Could not find Currency with an ID \(id.uuidString)"
+            return "Could not find Currency with an ID \(id)"
         }
     }
     

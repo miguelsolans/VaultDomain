@@ -9,6 +9,7 @@ import Foundation
 
 public enum GeneralError: LocalizedError {
     case invalidYear(Int)
+    case invalidAmount
 }
 
 extension GeneralError {
@@ -17,7 +18,10 @@ extension GeneralError {
         
         switch self {
         case .invalidYear(let year):
-            return "Specified year is invalid: \(year)"
+            return "The specified year is invalid: \(year)"
+            
+        case .invalidAmount:
+            return "The specified amount is invalid"
         }
     }
     

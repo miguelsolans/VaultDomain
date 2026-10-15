@@ -16,4 +16,16 @@ public struct AmountPerCategory: Identifiable {
     public let amount: Double
     
     public let hexColor: String
+    
+    public init(
+        id: UUID,
+        title: String,
+        amount: Double,
+        hexColor: String
+    ) {
+        self.id = id
+        self.title = title
+        self.amount = amount
+        self.hexColor = hexColor
+    }
 }
