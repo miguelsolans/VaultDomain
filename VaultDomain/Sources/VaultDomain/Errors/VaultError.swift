@@ -12,6 +12,9 @@ public enum VaultError: LocalizedError {
 
     /// No vault exists with the specified identifier.
     case notFound(UUID)
+    
+    /// Vault already exists
+    case alreadyExists
 }
 
 extension VaultError {
@@ -22,6 +25,9 @@ extension VaultError {
 
         case .notFound(let id):
             return "Could not find Vault with an ID \(id.uuidString)"
+            
+        case .alreadyExists:
+            return "A Vault with a specified name already exists"
         }
     }
 

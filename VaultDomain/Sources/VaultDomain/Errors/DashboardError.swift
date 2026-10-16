@@ -10,8 +10,8 @@ import Foundation
 /// Errors that can occur when retrieving a dashboard.
 public enum DashboardError: LocalizedError {
 
-    /// No dashboard exists with the specified identifier.
-    case notFound(UUID)
+    /// No dashboard exists
+    case notFound
 }
 
 extension DashboardError {
@@ -19,8 +19,8 @@ extension DashboardError {
     public var errorDescription: String? {
         switch self {
 
-        case .notFound(let id):
-            return "Could not find Dashboard with an ID \(id.uuidString)"
+        case .notFound:
+            return "Could not find Dashboard."
         }
     }
 
