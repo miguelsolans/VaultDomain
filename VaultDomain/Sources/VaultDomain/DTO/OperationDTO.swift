@@ -25,29 +25,6 @@ public struct OperationDTO {
     
     public let reimbursements: [ReimbursementDTO]?
     
-    public var numberOfReimbursements: Int {
-        reimbursements?.count ?? 0
-    }
-    
-    public var numberOfExpectedReimbursements: Int {
-        guard let reimbursements else { return 0 }
-        
-        return reimbursements.reduce(0) {
-            $1.status == .expected ? $0 + 1 : $0
-        }
-    }
-    
-    public var totalReimbursed: Double {
-        reimbursements?
-            .filter { $0.isSameVault && $0.status == .received }
-            .reduce(0) { $0 + $1.amount } ?? 0
-    }
-
-    public var netAmount: Double {
-        amount - totalReimbursed
-    }
-    
-    
     public init(
         id: UUID,
         amount: Double,
@@ -66,6 +43,36 @@ public struct OperationDTO {
         self.operationType = operationType
         self.category = category
         self.reimbursements = reimbursements
+    }
+}
+
+public extension OperationDTO {
+    
+    var totalReimbursements: Double {
+        reimbursements?
+            .reduce(0) { $0 + $1.amount } ?? 0
+    }
+    
+    var totalReimbursed: Double {
+        reimbursements?
+            .filter { $0.isSameVault && $0.status == .received }
+            .reduce(0) { $0 + $1.amount } ?? 0
+    }
+
+    var netAmount: Double {
+        amount - totalReimbursed
+    }
+    
+    var numberOfReimbursements: Int {
+        reimbursements?.count ?? 0
+    }
+    
+    func numberOfReimbursements(for status: ReimbursementStatus) -> Int {
+        guard let reimbursements else { return 0 }
+        
+        return reimbursements.reduce(0) {
+            $1.status == status ? $0 + 1 : $0
+        }
     }
 }
 
