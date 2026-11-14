@@ -11,25 +11,22 @@ public struct VaultDTO {
     
     public let id: UUID
     
-    public let initialDeposit: Double
+    public let initialDeposit: Decimal
     
     public let name: String
     
-    public let currentBalance: Double
+    public let currentBalance: Decimal
     
     public let isDefault: Bool
-    
-    public let currency: CurrencyDTO
     
     public let mainIncomeCategory: CategoryDTO?
     
     public init(
         id: UUID,
-        initialDeposit: Double,
+        initialDeposit: Decimal,
         name: String,
-        currentBalance: Double,
+        currentBalance: Decimal,
         isDefault: Bool,
-        currency: CurrencyDTO,
         mainIncomeCategory: CategoryDTO?
     ) {
         self.id = id
@@ -37,7 +34,6 @@ public struct VaultDTO {
         self.name = name
         self.currentBalance = currentBalance
         self.isDefault = isDefault
-        self.currency = currency
         self.mainIncomeCategory = mainIncomeCategory
     }
 }

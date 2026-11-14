@@ -13,7 +13,7 @@ public class ScheduledOperationDTO {
     
     public let title: String
     
-    public let amount: Double
+    public let amount: Decimal
     
     public let recurrence: RecurrenceType
     
@@ -38,7 +38,7 @@ public class ScheduledOperationDTO {
     public init(
         id: UUID,
         title: String,
-        amount: Double,
+        amount: Decimal,
         recurrence: RecurrenceType,
         startDate: Date,
         endDate: Date?,

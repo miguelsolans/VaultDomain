@@ -27,9 +27,9 @@ public struct CategoryDTO {
     
     public let numberOfOperations: Int
     
-    public let totalAmount: Double
+    public let totalAmount: Decimal
 
-    public let netAmount: Double
+    public let netAmount: Decimal
     
     public let isMainIncome: Bool
     
@@ -49,8 +49,8 @@ public struct CategoryDTO {
         color: String,
         hasOperations: Bool,
         numberOfOperations: Int,
-        totalAmount: Double,
-        netAmount: Double,
+        totalAmount: Decimal,
+        netAmount: Decimal,
         isMainIncome: Bool,
         isArchived: Bool
     ) {

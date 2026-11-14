@@ -15,6 +15,13 @@ public enum GeneralError: LocalizedError {
 
     /// The specified monetary amount is not valid for the requested operation.
     case invalidAmount
+    
+    /// The specified title is not valid for the requested operation.
+    case emptyTitle
+    
+    /// The specified category does not belong to the vault.
+    case categoryDoesNotBelongToVault
+    
 }
 
 extension GeneralError {
@@ -27,6 +34,12 @@ extension GeneralError {
 
         case .invalidAmount:
             return "The specified amount is invalid"
+            
+        case .emptyTitle:
+            return "The title is invalid"
+        
+        case .categoryDoesNotBelongToVault:
+            return "Category does not belong to vault"
         }
     }
 
