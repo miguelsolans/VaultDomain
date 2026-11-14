@@ -13,14 +13,14 @@ public struct AmountPerCategory: Identifiable {
 
     public let title: String
     
-    public let amount: Double
+    public let amount: Decimal
     
     public let hexColor: String
     
     public init(
         id: UUID,
         title: String,
-        amount: Double,
+        amount: Decimal,
         hexColor: String
     ) {
         self.id = id

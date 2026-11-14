@@ -11,7 +11,7 @@ public struct OperationDTO {
     
     public let id: UUID
     
-    public let amount: Double
+    public let amount: Decimal
     
     public let date: Date
     
@@ -27,7 +27,7 @@ public struct OperationDTO {
     
     public init(
         id: UUID,
-        amount: Double,
+        amount: Decimal,
         date: Date,
         title: String,
         notes: String?,
@@ -48,29 +48,29 @@ public struct OperationDTO {
 
 public extension OperationDTO {
     
-    var totalReimbursements: Double {
+    var totalReimbursements: Decimal {
         reimbursements?
-            .reduce(0) { $0 + $1.amount } ?? 0
+            .reduce(.zero) { $0 + $1.amount } ?? .zero
     }
     
-    var totalReimbursed: Double {
+    var totalReimbursed: Decimal {
         reimbursements?
             .filter { $0.isSameVault && $0.status == .received }
-            .reduce(0) { $0 + $1.amount } ?? 0
+            .reduce(.zero) { $0 + $1.amount } ?? .zero
     }
 
-    var netAmount: Double {
+    var netAmount: Decimal {
         amount - totalReimbursed
     }
     
     var numberOfReimbursements: Int {
-        reimbursements?.count ?? 0
+        reimbursements?.count ?? .zero
     }
     
     func numberOfReimbursements(for status: ReimbursementStatus) -> Int {
         guard let reimbursements else { return 0 }
         
-        return reimbursements.reduce(0) {
+        return reimbursements.reduce(.zero) {
             $1.status == status ? $0 + 1 : $0
         }
     }
@@ -80,7 +80,7 @@ public struct ReimbursementDTO {
     
     public let id: UUID
     
-    public var amount: Double
+    public var amount: Decimal
     
     public let notes: String
     
@@ -98,7 +98,7 @@ public struct ReimbursementDTO {
 
     public init(
         id: UUID,
-        amount: Double,
+        amount: Decimal,
         notes: String = "",
         status: ReimbursementStatus,
         sourceVault: VaultDTO,
