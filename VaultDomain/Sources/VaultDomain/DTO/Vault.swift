@@ -1,5 +1,5 @@
 //
-//  VaultDTO.swift
+//  Vault.swift
 //  Vault
 //
 //  Created by Miguel Solans on 20/04/2026.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct VaultDTO {
+public struct Vault {
     
     public let id: UUID
     
@@ -19,7 +19,7 @@ public struct VaultDTO {
     
     public let isDefault: Bool
     
-    public let mainIncomeCategory: CategoryDTO?
+    public let mainIncomeCategory: Category?
     
     public init(
         id: UUID,
@@ -27,7 +27,7 @@ public struct VaultDTO {
         name: String,
         currentBalance: Decimal,
         isDefault: Bool,
-        mainIncomeCategory: CategoryDTO?
+        mainIncomeCategory: Category?
     ) {
         self.id = id
         self.initialDeposit = initialDeposit

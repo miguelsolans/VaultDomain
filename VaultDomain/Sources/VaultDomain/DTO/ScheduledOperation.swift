@@ -1,5 +1,5 @@
 //
-//  ScheduledOperationDTO.swift
+//  ScheduledOperation.swift
 //  VaultCore
 //
 //  Created by Miguel Solans on 06/10/2026.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class ScheduledOperationDTO {
+public class ScheduledOperation {
     
     public let id: UUID
     
@@ -31,9 +31,9 @@ public class ScheduledOperationDTO {
     
     public let updatedAt: Date
     
-    public let vault: VaultDTO
+    public let vault: Vault
     
-    public let category: CategoryDTO
+    public let category: Category
     
     public init(
         id: UUID,
@@ -47,8 +47,8 @@ public class ScheduledOperationDTO {
         isActive: Bool,
         createdAt: Date,
         updatedAt: Date,
-        vault: VaultDTO,
-        category: CategoryDTO
+        vault: Vault,
+        category: Category
     ) {
         self.id = id
         self.title = title
