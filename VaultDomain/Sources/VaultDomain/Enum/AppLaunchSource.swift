@@ -2,7 +2,7 @@
 //  AppLaunchSource.swift
 //  VaultDomain
 //
-//  Created by itsector on 25/10/2026.
+//  Created by Miguel Solans on 25/10/2026.
 //
 
 import Foundation
