@@ -27,13 +27,16 @@ public struct FinancialOverview {
     
     public let periodComparison: PeriodComparison
     
+    public let monthlySavings: [MonthlySavings]
+    
     public init(
         period: AnalyticsPeriod,
         balance: Balance,
         cashFlow: CashFlow,
         spending: Spending,
         categories: CategoriesBreakdown,
-        periodComparison: PeriodComparison
+        periodComparison: PeriodComparison,
+        monthlySavings: [MonthlySavings]
     ) {
         self.period = period
         self.balance = balance
@@ -41,5 +44,6 @@ public struct FinancialOverview {
         self.spending = spending
         self.categories = categories
         self.periodComparison = periodComparison
+        self.monthlySavings = monthlySavings
     }
 }

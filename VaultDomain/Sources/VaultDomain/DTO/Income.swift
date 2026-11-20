@@ -2,7 +2,7 @@
 //  Income.swift
 //  VaultDomain
 //
-//  Created by itsector on 19/11/2026.
+//  Created by Miguel Solans on 19/11/2026.
 //
 
 import Foundation
