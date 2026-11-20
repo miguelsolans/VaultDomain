@@ -1,5 +1,5 @@
 //
-//  SettingsDTO.swift
+//  Settings.swift
 //  VaultCore
 //
 //  Created by Miguel Solans on 14/07/2026.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-public struct SettingsDTO {
+public struct Settings {
 
-    public var favoriteVault: VaultDTO?
+    public var favoriteVault: Vault?
     
     public init(
-        favoriteVault: VaultDTO? = nil
+        favoriteVault: Vault? = nil
     ) {
         self.favoriteVault = favoriteVault
     }

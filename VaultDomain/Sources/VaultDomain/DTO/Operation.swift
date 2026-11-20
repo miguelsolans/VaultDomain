@@ -1,5 +1,5 @@
 //
-//  OperationDTO.swift
+//  Operation.swift
 //  Vault
 //
 //  Created by Miguel Solans on 18/04/2026.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct OperationDTO {
+public struct Operation {
     
     public let id: UUID
     
@@ -21,9 +21,9 @@ public struct OperationDTO {
     
     public let operationType: OperationType
     
-    public let category: CategoryDTO
+    public let category: Category
     
-    public let reimbursements: [ReimbursementDTO]?
+    public let reimbursements: [Reimbursement]?
     
     public init(
         id: UUID,
@@ -32,8 +32,8 @@ public struct OperationDTO {
         title: String,
         notes: String?,
         operationType: OperationType,
-        category: CategoryDTO,
-        reimbursements: [ReimbursementDTO]?
+        category: Category,
+        reimbursements: [Reimbursement]?
     ) {
         self.id = id
         self.amount = amount
@@ -46,7 +46,7 @@ public struct OperationDTO {
     }
 }
 
-public extension OperationDTO {
+public extension Operation {
     
     var totalReimbursements: Decimal {
         reimbursements?
@@ -76,7 +76,7 @@ public extension OperationDTO {
     }
 }
 
-public struct ReimbursementDTO {
+public struct Reimbursement {
     
     public let id: UUID
     
@@ -86,11 +86,11 @@ public struct ReimbursementDTO {
     
     public let status: ReimbursementStatus
     
-    public let sourceVault: VaultDTO
+    public let sourceVault: Vault
     
-    public let destinationVault: VaultDTO
+    public let destinationVault: Vault
     
-    public let destinationCategory: CategoryDTO?
+    public let destinationCategory: Category?
     
     public var isSameVault: Bool {
         return sourceVault.id == destinationVault.id
@@ -101,9 +101,9 @@ public struct ReimbursementDTO {
         amount: Decimal,
         notes: String = "",
         status: ReimbursementStatus,
-        sourceVault: VaultDTO,
-        destinationVault: VaultDTO,
-        destinationCategory: CategoryDTO? = nil
+        sourceVault: Vault,
+        destinationVault: Vault,
+        destinationCategory: Category? = nil
     ) {
         self.id = id
         self.amount = amount

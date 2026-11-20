@@ -1,5 +1,5 @@
 //
-//  CategoryDTO.swift
+//  Category.swift
 //  Vault
 //
 //  Created by Miguel Solans on 20/04/2026.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CategoryDTO {
+public struct Category {
     
     public let id: UUID
     
