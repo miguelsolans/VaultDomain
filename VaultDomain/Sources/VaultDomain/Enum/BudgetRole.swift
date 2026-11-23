@@ -11,7 +11,7 @@ import Foundation
 ///
 /// Use this value to classify expenses according to their financial
 /// purpose, such as essential needs, discretionary wants, or savings.
-public enum BudgetRole: Int16 {
+public enum BudgetRole: Int16, Decodable {
     
     /// The category has not been assigned a budgeting role.
     case unclassified = 0

@@ -8,7 +8,7 @@
 import Foundation
 
 /// The financial direction of an operation recorded in a vault.
-public enum OperationType: Int16 {
+public enum OperationType: Int16, Decodable {
     
     /// Money received by the vault.
     case income = 0

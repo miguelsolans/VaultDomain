@@ -2,22 +2,44 @@
 //  PersistenceChangeNotifications.swift
 //  VaultDomain
 //
-//  Created by Miguel Solans on 12/11/2026.
+//  Created by Miguel Solans on 18/04/2026.
 //
 
-import Foundation
+public enum CloudKitAccountAvailability: Sendable {
+    case available
+    case noAccount
+    case restricted
+    case temporarilyUnavailable
+    case couldNotDetermine
+}
 
-public extension Notification.Name {
+public enum PersistenceSyncState: Equatable, Sendable {
+    case storeLoading
+    case storeLoaded
+    case checkingAccount
+    case waitingForImport
+    case importInProgress
+    case importSucceeded
+    case importFailed
+    case accountUnavailable(CloudKitAccountAvailability)
+}
 
-    static let importSuccessful = Notification.Name("CoreDataImportSuccessful")
-    
-    static let importError = Notification.Name("CoreDataImportError")
+extension CloudKitAccountAvailability: Equatable {}
 
-    static let exportSuccessful = Notification.Name("CoreDataExportSuccessful")
-    
-    static let exportError = Notification.Name("CoreDataExportError")
+public enum PersistenceChange: Sendable {
+    case dataChanged
+    case syncStateChanged(PersistenceSyncState)
+}
 
-    static let dataChanged = Notification.Name("CoreDataChanged")
+public protocol PersistenceChangeObserver: AnyObject {
+    func persistenceChangeDidOccur(_ change: PersistenceChange)
+}
 
-    static let syncDidBecomeIdle = Notification.Name("CoreDataSyncDidBecomeIdle")
+public protocol PersistenceChangeObserving: AnyObject {
+    var syncState: PersistenceSyncState { get }
+
+    func addObserver(_ observer: PersistenceChangeObserver, replayCurrentState: Bool)
+    func removeObserver(_ observer: PersistenceChangeObserver)
+    func checkCloudKitAccount() async -> CloudKitAccountAvailability
+    func retryCloudKitSyncCheck() async -> CloudKitAccountAvailability
 }
